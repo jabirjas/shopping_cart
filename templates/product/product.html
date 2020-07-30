@@ -2,17 +2,68 @@
 <html>
 <head>
 	<title>{{heading}}</title>
+    <style type="text/css">
+        .lgi-heading{
+            font-size: 20px;
+            font-weight: bold;
+            color: grey;
+            margin: 8px 0 4px;
+        }
+        .lgi-text{
+            font-size: 16px;
+        }
+        .button{
+            margin-top: 3%;
+            width: 100px;
+            padding: 5px;
+            color: #fdfdfd;
+            text-decoration: none;
+            font-weight: bold;
+            background: #e66a6a;
+        }
+    </style>
 </head>
 <body>
-    <div>
-        {% if product %}
-        <h2 style="margin-bottom: 2%;">{{product.name}}</h2>
-        <p>{{ product.price }}</p>
-        <p>{{ product.quantity }}</p>
-        <p>{{ product.image }}</p>
-        <button style="display: inline-block; margin-right: 2%;"><a href="{% url 'shopping:update_product' pk=product.pk %}" style="color: black;">Edit</a></button>
+    {% if product %}
+    <div style="width: 70%;
+    margin: 0 auto; text-align: center;background: #e1f4f7;padding: 1%;">
+        <div style="text-align: center;">
+            <h2>Product Info <small></small></h2>
+        </div>
+
+        <div>
+            <div>
+                <div>
+                    <div>
+                        <div class="lgi-heading">Product Name</div>
+                        <small class="lgi-text">{{product.name}}</small>
+                    </div>
+                </div>
+
+                <div class="list-group-item media">
+                    <div class="media-body">
+                        <div class="lgi-heading">Price</div>
+                        <small class="lgi-text">{{ product.price }}</small>
+                    </div>
+                </div>
+                <div class="list-group-item media">
+                    <div class="media-body">
+                        <div class="lgi-heading">Qty</div>
+                        <small class="lgi-text">{{ product.quantity }}</small>
+                    </div>
+                </div>
+                <div class="list-group-item media">
+                    <div class="media-body" style="width: 35%; margin: 0 auto;">
+                        <div class="lgi-heading">Image</div>
+                        <div><img src="{{product.image.url}}" alt="{{product.name}}" style="width: 100%;height: 100%;" /></div>
+                    </div>
+                </div>
+                <button class="button"><a href="{% url 'shopping:update_product' pk=product.pk %}" style="color: white;
+    text-decoration: none;">Edit</a></button>
+            </div>
+        </div>
         {% else %}
-        <p>No content</p>
+        <p style="color: red;font-size: 24px;font-weight: bold;text-align: center;">No Contents! So Please Add</p>
         {% endif %}
     </div>
 </body>
