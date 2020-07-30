@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{heading}}</title>
+</head>
+<body>
+    <nav>
+        {% if user.is_authenticated %}
+        <p><a href="{% url 'logout' %}">Logout</a></p>
+        {% endif %}
+    </nav>
+    <div>
+        {% if products %}
+        <ul>
+            {% for product in products %}
+            <li>
+                <h2><a href="{% url 'shopping:view_product' pk=product.pk %}" title="{{product.name}}" style="color: black;">{{product.name}}</a></h2>
+                <p>{{product.price}}</p>
+             	<p>{{product.quantity}}</p>
+              	<p>{{product.image}}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

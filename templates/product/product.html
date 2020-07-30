@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{heading}}</title>
+</head>
+<body>
+    <div>
+        {% if product %}
+        <h2 style="margin-bottom: 2%;">{{product.name}}</h2>
+        <p>{{ product.price }}</p>
+        <p>{{ product.quantity }}</p>
+        <p>{{ product.image }}</p>
+        <button style="display: inline-block; margin-right: 2%;"><a href="{% url 'shopping:update_product' pk=product.pk %}" style="color: black;">Edit</a></button>
+        {% else %}
+        <p>No content</p>
+        {% endif %}
+    </div>
+</body>
+</html>
