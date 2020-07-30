@@ -2,12 +2,74 @@
 <html>
 <head>
 	<title>{{heading}}</title>
+	<style type="text/css">
+		.fg-line{
+			width: 60%;
+		    text-align: center;
+		    margin: 0 auto 2%;
+		}
+		.fg-label{
+			color: #6d5353;
+	    font-weight: bold;
+	    margin-right: 2%;
+		}
+		.button{
+            margin-top: 3%;
+            width: 100px;
+            padding: 5px;
+            color: #fdfdfd;
+            text-decoration: none;
+            font-weight: bold;
+            background: #e66a6a;
+		}
+	</style>
 </head>
 <body>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit" />
-    </form>
+	<div style="width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    background: #dfe3e4;
+    padding: 2%;">
+    <h2 style="text-align: center;color: #6b6464;">Create Product</h2>
+	    <form method="POST" enctype="multipart/form-data">
+	        {% csrf_token %}
+	        <div class="fg-line">
+				<label class="fg-label">Name</label>
+				{{ form.name }}
+				{% if form.name.errors %}
+		            <span class="error">{{ form.name.errors.as_text }}</span>
+		        {% endif %}
+			</div>
+			<div class="fg-line">
+				<label class="fg-label">Price</label>
+				{{ form.price }}
+				{% if form.price.errors %}
+		            <span class="error">{{ form.price.errors.as_text }}</span>
+		        {% endif %}
+			</div>
+			<div class="fg-line">
+				<label class="fg-label">Qty</label>
+				{{ form.quantity }}
+				{% if form.quantity.errors %}
+		            <span class="error">{{ form.quantity.errors.as_text }}</span>
+		        {% endif %}
+			</div>
+			<div class="fg-line">
+				<label class="fg-label">Image</label>
+				{{ form.image }}
+				{% if form.image.errors %}
+		            <span class="error">{{ form.image.errors.as_text }}</span>
+		        {% endif %}
+			</div>
+			<div class="fg-line">
+				<label class="fg-label">Status</label>
+				{{ form.status }}
+				{% if form.status.errors %}
+		            <span class="error">{{ form.status.errors.as_text }}</span>
+		        {% endif %}
+			</div>
+	        <input type="submit" value="Submit" class="button" />
+	    </form>
+	</div>
 </body>
 </html>

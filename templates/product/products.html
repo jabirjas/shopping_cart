@@ -2,6 +2,18 @@
 <html>
 <head>
 	<title>{{heading}}</title>
+    <style type="text/css">
+        .button{
+            margin-top: 3%;
+            width: 60px;
+            padding: 5px;
+            color: #fdfdfd;
+            text-decoration: none;
+            font-weight: bold;
+            background: #e66a6a;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -38,7 +50,7 @@
                     <td style="width: 100px;height: 100px;"><img src="{{product.image.url}}" alt="{{product.name}}" style="width:100%;"/></td>
                     <td>{{product.status}}</td>
                     <td>
-                        <a href="{% url 'shopping:update_product' pk=product.pk %}" class="btn btn-default btn-icon waves-effect waves-circle waves-float">Edit</a>
+                        <a href="{% url 'shopping:update_product' pk=product.pk %}" class="button">Edit</a>
                     </td>
                 </tr>
                 {% endfor %}
